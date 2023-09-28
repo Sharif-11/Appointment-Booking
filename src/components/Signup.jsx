@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 const Signup = () => {
     return (
-        <div className='m-7'>
+        <div className='m-7 mt-20'>
             <div className="hero">
                 <div className="hero-content flex-col">
                     <div className="text-center lg:text-left">
