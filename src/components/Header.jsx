@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div>
+        <div className='m-2'>
             <div className="navbar flex justify-between">
                 <div className="navbar-start">
                     <NavLink to='/home' className="btn btn-ghost normal-case text-xl">MeetDoctor</NavLink>
@@ -15,6 +15,7 @@ const Header = () => {
                         <li className='mx-2'><NavLink to="/appointment">Appointment</NavLink></li>
                         <li className='mx-2'><NavLink to="/about">About</NavLink></li>
                         <li className='mx-2'><NavLink to="/login">Login</NavLink></li>
+                        <li className='mx-2'><NavLink to="/signup">Signup</NavLink></li>
                         <li className='mx-2'><NavLink to="/admin">Admin</NavLink></li>
                     </ul>
                 </div>

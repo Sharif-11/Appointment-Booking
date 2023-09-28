@@ -8,6 +8,7 @@ import Appointment from './components/Appointment';
 import Contact from './components/Contact';
 import Login from './components/Login';
 import Schedule from './components/Schedule';
+import Signup from './components/Signup';
 function App() {
   const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ function App() {
         {
           path:"/login",
           element:<Login></Login>
+        },
+        {
+          path:"/signup",
+          element:<Signup></Signup>
         },
         {
           path:"/schedule",
