@@ -8,6 +8,8 @@ import Appointment from './components/Appointment';
 import Contact from './components/Contact';
 import Login from './components/Login';
 import Schedule from './components/Schedule';
+import Signup from './components/Signup';
+import ErrorPage from './components/ErrorPage';
 function App() {
   const router = createBrowserRouter([
     {
@@ -15,34 +17,39 @@ function App() {
       element: <Layout></Layout>,
       children: [
         {
-          path:"/home",
-          element:<Home></Home>
+          path: "/home",
+          element: <Home></Home>
         },
         {
-          path:"/about",
-          element:<About></About>
+          path: "/about",
+          element: <About></About>
         },
         {
-          path:"/admin",
-          element:<Admin></Admin>
+          path: "/admin",
+          element: <Admin></Admin>
         },
         {
-          path:"/appointment",
-          element:<Appointment></Appointment>
+          path: "/appointment",
+          element: <Appointment></Appointment>
         },
         {
-          path:"/contact",
-          element:<Contact></Contact>
+          path: "/contact",
+          element: <Contact></Contact>
         },
         {
-          path:"/login",
-          element:<Login></Login>
+          path: "/login",
+          element: <Login></Login>
         },
         {
-          path:"/schedule",
-          element:<Schedule></Schedule>
+          path: "/signup",
+          element: <Signup></Signup>
+        },
+        {
+          path: "/schedule",
+          element: <Schedule></Schedule>
         }
-      ]
+      ],
+      errorElement: <ErrorPage></ErrorPage>
     }
   ])
   return (
