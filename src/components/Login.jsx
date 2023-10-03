@@ -2,7 +2,7 @@ import React from 'react';
 
 const Login = () => {
     return (
-        <div className='m-7'>
+        <div className='m-7 mt-24'>
             <div className="hero">
                 <div className="hero-content flex-col">
                     <div className="text-center lg:text-left">

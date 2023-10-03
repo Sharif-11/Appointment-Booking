@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className='m-2'>
-            <div className="navbar flex justify-between">
+        <div className='mt-16'>
+            <div className="navbar shadow-xl flex justify-between fixed top-0 w-full bg-[#f0f8ff] z-10">
                 <div className="navbar-start">
                     <NavLink to='/home' className="btn btn-ghost normal-case text-xl">MeetDoctor</NavLink>
                 </div>
