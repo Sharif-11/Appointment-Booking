@@ -9,23 +9,23 @@ const Login = () => {
                         <h1 className="text-4xl font-bold">Login Now!</h1>
                     </div>
 
-                    <div className="card my-3 mx-9 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 card-body">
+                    <div className="card my-3 mx-9 flex-shrink-0 w-full max-w-sm shadow-2xl bg-white card-body">
                         <form>
                             <div className="">
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Name</span>
+                                        <span className="label-text">Phone</span>
                                     </label>
-                                    <input type="text" placeholder="name" name='name' className="input input-bordered" required />
+                                    <input type="tel" placeholder="Enter Phone Number" name="phone" className="bg-white w-full input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Phone</span>
+                                        <span className="label-text">Password</span>
                                     </label>
-                                    <input type="tel" placeholder="Enter Phone Number" name="phone" className="input input-bordered" />
+                                    <input type="password" placeholder="password" name='password' className="bg-white w-full input input-bordered " required />
                                 </div>
                                 <div className="form-control mt-6">
-                                    <button className="btn btn-primary text-white">Login</button>
+                                    <button className="btn bg-success glass text-white">Login</button>
                                 </div>
                             </div>
                         </form>

@@ -2,8 +2,8 @@ import React from 'react';
 
 const Schedule = () => {
     return (
-        <div className='m-7'>
-            <h1>This is Schedule Page.</h1>
+        <div>
+            <h1>This is Doctor's Schedule Page</h1>
         </div>
     );
 };

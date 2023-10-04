@@ -1,5 +1,4 @@
 import React from 'react';
-
 const Appointment = () => {
     return (
         <div className='m-7'>
