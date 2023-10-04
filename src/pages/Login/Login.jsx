@@ -16,13 +16,13 @@ const Login = () => {
                                     <label className="label">
                                         <span className="label-text">Phone</span>
                                     </label>
-                                    <input type="tel" placeholder="Enter Phone Number" name="phone" className="bg-white input input-bordered" />
+                                    <input type="tel" placeholder="Enter Phone Number" name="phone" className="bg-white w-full input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type="password" placeholder="password" name='password' className="bg-white input input-bordered " required />
+                                    <input type="password" placeholder="password" name='password' className="bg-white w-full input input-bordered " required />
                                 </div>
                                 <div className="form-control mt-6">
                                     <button className="btn bg-success glass text-white">Login</button>

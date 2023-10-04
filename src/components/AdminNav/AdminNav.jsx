@@ -7,7 +7,7 @@ import { RiLockPasswordFill } from 'react-icons/ri';
 import { FaSignOutAlt } from 'react-icons/fa';
 const AdminNav = () => {
     return (
-        <div className="bg-white border-2 row-span-3 rounded-lg divide-y">
+        <div className="bg-white border-2 row-span-3 rounded-2xl divide-y">
             {/* navigation */}
             <div className='text-center mt-8'>
                 <div className="avatar">

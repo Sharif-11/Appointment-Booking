@@ -105,7 +105,7 @@ const AdminDashboard = () => {
     // Format the date as "DD, Month YYYY"
     const formattedDate = `${day < 10 ? '0' : ''}${day}, ${monthName} ${year}`;
     return (
-        <div className='mt-6'>
+        <div className=''>
             <div>
                 {/* dashboard-right-part */}
                 <div className=''>

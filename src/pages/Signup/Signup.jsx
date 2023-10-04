@@ -17,37 +17,37 @@ const Signup = () => {
                                     <label className="label">
                                         <span className="label-text">Name</span>
                                     </label>
-                                    <input type="text" placeholder="name" name='name' className="bg-white input input-bordered" required />
+                                    <input type="text" placeholder="name" name='name' className="bg-white w-full input input-bordered" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Date of Birth</span>
                                     </label>
-                                    <input type="date" placeholder="Select Date of Birth" name='dob' className="bg-white input input-bordered" required />
+                                    <input type="date" placeholder="Select Date of Birth" name='dob' className="bg-white w-full input input-bordered" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Phone</span>
                                     </label>
-                                    <input type="tel" placeholder="Enter Phone Number" name='phone' className="bg-white input input-bordered" required />
+                                    <input type="tel" placeholder="Enter Phone Number" name='phone' className="bg-white w-full input input-bordered" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Email</span>
                                     </label>
-                                    <input type="text" placeholder="email" name="email" className="bg-white input input-bordered" />
+                                    <input type="text" placeholder="email" name="email" className="bg-white w-full input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type="password" placeholder="password" name='password' className="bg-white input input-bordered " required />
+                                    <input type="password" placeholder="password" name='password' className="bg-white w-full input input-bordered" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Confirm Password</span>
                                     </label>
-                                    <input type="password" placeholder="Confirm password" name='confirm-password' className="bg-white input input-bordered " required />
+                                    <input type="password" placeholder="Confirm password" name='confirm-password' className="bg-white w-full input input-bordered" required />
                                     <label className="label">
                                         <Link to='/login' className="label-text-alt link link-hover">Already Have an account?</Link>
                                     </label>
