@@ -72,12 +72,12 @@ const Home = () => {
                 </div>
                 <div className='right w-1/3 flex flex-col'>
                     
-                    <img src="/public/images/doc1.png" className='w-300'/>
+                    <img src="/public/images/doctor-1.png" className='w-300'/>
                 </div>
             </div>
             <div className='container3 mt-30 flex mx-auto items-center justify-center '>
                  <div className='left w-1/3 flex flex-col'>
-                    <img src="/public/images/doc2.png" className='w-300'/>
+                    <img src="/public/images/doctor-2.png" className='w-300'/>
                 </div>
                 <div className='right w-3/4'>
                     <p className='text-gray-600 text-3xl font-bold py-3 mx-20'>Specialist hearing services are provided</p>

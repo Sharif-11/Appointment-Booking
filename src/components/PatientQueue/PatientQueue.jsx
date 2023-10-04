@@ -1,7 +1,7 @@
 import React from 'react';
 import { MdVerifiedUser } from "react-icons/md";
-import "./Schedule.css"
-const Schedule = () => {
+import "./PatientQueue.css"
+const PatientQueue = () => {
     const appointments = [
         {
             serialNo: 1,
@@ -204,4 +204,4 @@ const Schedule = () => {
     );
 };
 
-export default Schedule;
+export default PatientQueue;
