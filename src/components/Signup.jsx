@@ -1,7 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
+import { useFormik } from 'formik';
+import signupSchema from '../formValidator/signup.yup';
 const Signup = () => {
+    const formik = useFormik({
+        initialValues: {
+          name: '',
+          email: '',
+          password: '',
+          dateOfBirth:'',
+          phoneNo:'',
+          confirmPassword:''
+
+        },
+        validationSchema: signupSchema,
+        onSubmit: (values) => {
+        },
+      });
     return (
         <div className='m-7 mt-20'>
             <div className="hero">
@@ -11,44 +27,98 @@ const Signup = () => {
                     </div>
 
                     <div className="card mx-9 flex-shrink-0 w-full max-w-[650px] shadow-2xl bg-white card-body">
-                        <form className='w-[100%]'>
+                        <form className='w-[100%]' onSubmit={formik.handleSubmit}>
                             <div className="flex justify-between w-[100%] flex-wrap">
                                 <div className="form-control w-[45%]">
                                     <label className="label">
                                         <span className="label-text">Name</span>
                                     </label>
-                                    <input type="text" placeholder="name" name='name' className="bg-white input input-bordered" required />
+                                    <input type="text" 
+                                    placeholder="name"
+                                     name="name" 
+                                     id='name'
+                                     onChange={formik.handleChange}
+                                     value={formik.values.name}
+                                     className="bg-white input input-bordered"  required
+                                    />
+                                      {formik.touched.name && formik.errors.name ? (
+                               <div className="text-[red] text-[600] text-xs my-1">*{formik.errors.name}</div>
+                                    ) : null}
+
                                 </div>
                                 <div className="form-control w-[45%]">
                                     <label className="label">
                                         <span className="label-text">Date of Birth</span>
                                     </label>
-                                    <input type="date" placeholder="Select Date of Birth" name='dob' className="bg-white input input-bordered" required />
+                                    <input type="date" 
+                                    placeholder="Select Date of Birth" 
+                                    name='dateOfBirth' 
+                                    id='dateOfBirth'
+                                    onChange={formik.handleChange}
+                                    value={formik.values.dateOfBirth}
+                                    className="bg-white input input-bordered" required />
+                                      {formik.touched.dateOfBirth && formik.errors.dateOfBirth ? (
+          <div className="text-xs text-[red] text-[600] my-1">*{formik.errors.dateOfBirth}</div>
+        ) : null}
                                 </div>
                                 <div className="form-control w-[45%]">
                                     <label className="label">
                                         <span className="label-text">Phone</span>
                                     </label>
-                                    <input type="tel" placeholder="Enter Phone Number" name='phone' className="bg-white input input-bordered" required />
+                                    <input type="tel" 
+                                    placeholder="Enter Phone Number"
+                                     name='phoneNo' 
+                                    id='phoneNo'
+                                    onChange={formik.handleChange}
+                                    value={formik.values.phoneNo} 
+                                     className="bg-white input input-bordered" required />
+                                       {formik.touched.phoneNo && formik.errors.phoneNo ? (
+          <div className="text-xs text-[600] my-1 text-[red]">*{formik.errors.phoneNo}</div>
+        ) : null}
                                 </div>
                                 <div className="form-control w-[45%]">
                                     <label className="label">
                                         <span className="label-text">Email</span>
                                     </label>
-                                    <input type="text" placeholder="email" name="email" className="bg-white input input-bordered" />
+                                    <input type="text" 
+                                    placeholder="email"
+                                     name="email" 
+                                    id='email'
+                                    onChange={formik.handleChange}
+                                    value={formik.values.email}
+                                     className="bg-white input input-bordered" />
+                                       {formik.touched.email && formik.errors.email ? (
+          <div className="text-xs text-[red] my-1 text-[600]">*{formik.errors.email}</div>
+        ) : null}
                                 </div>
                                 <div className="form-control w-[45%]">
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type="password" placeholder="password" name='password' className="bg-white input input-bordered " required />
+                                    <input type="password" 
+                                    placeholder="password" 
+                                    name='password'         
+                                    id='password'
+                                    onChange={formik.handleChange}
+                                    value={formik.values.password}
+                                    className="bg-white input input-bordered " required />
+                                      {formik.touched.password && formik.errors.password ? (
+          <div className="text-xs text-[red] my-1 text-[600]">*{formik.errors.password}</div>
+        ) : null}
                                 </div>
                                 <div className="form-control w-[45%]">
                                     <label className="label">
                                         <span className="label-text">Confirm Password</span>
                                     </label>
-                                    <input type="password" placeholder="Confirm password" name='confirm-password' className="bg-white input input-bordered " required />
-                                  
+                                    <input type="password"
+                                    name='confirmPassword' 
+                                    id='confirmPassword'
+                                    onChange={formik.handleChange}
+                                    value={formik.values.confirmPassword}
+                                     placeholder="Confirm password"  className="bg-white input input-bordered " required />
+                                    {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+          <div className="text-xs text-[red] my-1 text-[600]">*{formik.errors.confirmPassword}</div>
+        ) : null}
                                 </div>
                                
 
@@ -57,7 +127,7 @@ const Signup = () => {
                                 </div> */}
                             </div>
                             <div className="form-control mt-6">
-                                    <button className="btn glass bg-success text-white">Register</button>
+                                    <input type='submit' className="btn glass bg-success text-white" value={'Register'} />
                                     <label className="label flex justify-center">
                                         <Link to='/login' className="label-text-alt link link-hover">Already Have an account? Login</Link>
                                     </label>
