@@ -1,9 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { useFormik } from 'formik';
 import signupSchema from '../formValidator/signup.yup';
+import axios from 'axios';
+import { rootUrl } from '../utils/rootUrl';
 const Signup = () => {
+    const navigate = useNavigate();
+    const [success,setSuccess]=useState(null)
+     const [message,setMessage]=useState('')
     const formik = useFormik({
         initialValues: {
           name: '',
@@ -15,9 +20,27 @@ const Signup = () => {
 
         },
         validationSchema: signupSchema,
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
+             const {confirmPassword,...patient}=values
+            console.log(patient);
+            await axios.post(rootUrl+'user/patient',patient)
+             .then(({data})=>{
+                console.log(data);
+                if(data.status){
+                   setSuccess(true)
+                   setMessage(data.message)
+                   navigate('../login')
+                }
+             })
+             .catch(err=>{
+                console.log(err.response.data);
+                const {message}=err.response.data
+                setSuccess(false)
+                setMessage(message)
+             })
         },
       });
+      console.log({success});
     return (
         <div className='m-7 mt-20'>
             <div className="hero">
@@ -128,6 +151,11 @@ const Signup = () => {
                             </div>
                             <div className="form-control mt-6">
                                     <input type='submit' className="btn glass bg-success text-white" value={'Register'} />
+                                    {
+                                        (success===true) ? 
+                                        <p className='my-1 text-center text-md text-[700] text-[green]'>{message}</p>:
+                                        <p className='my-1 text-center text-md text-[700] text-[red]'>{message}</p>
+                                    }
                                     <label className="label flex justify-center">
                                         <Link to='/login' className="label-text-alt link link-hover">Already Have an account? Login</Link>
                                     </label>
