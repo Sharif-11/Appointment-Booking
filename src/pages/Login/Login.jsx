@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import loginSchema from '../../formValidator/login.yup';
 import CustomForm from '../../components/Formik/CustomForm';
 import CustomField from '../../components/Formik/CustomField';
 import axios from 'axios';
 import { rootUrl } from '../../utils/rootUrl';
 import { useNavigate } from 'react-router-dom';
+import UserContext from '../../Contexts/UserContext';
 
 const Login = () => {
+    const [user,setUser]=useContext(UserContext)
     const [status,setStatus]=useState(null);
     const [message,setMessage]=useState('')
     const navigate=useNavigate();
+
     const initialValues={
         phoneNo:"",
         password:""
@@ -18,6 +21,10 @@ const Login = () => {
         await axios.post(rootUrl+'user/login',values)
          .then(({data})=>{
             if(data.status){
+                const {token,...others}=data.data
+                setUser(others)
+                localStorage.setItem('token',data.data.token)
+                setStatus(true);
                 navigate('../')
             }
          })
@@ -27,6 +34,7 @@ const Login = () => {
               setMessage(message)
          })
     }
+    console.log("logged in user==",user);
     return (
         <div className='m-7 mt-24'>
             <div className="hero">
