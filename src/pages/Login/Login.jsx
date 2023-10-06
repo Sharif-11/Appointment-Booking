@@ -1,16 +1,40 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import loginSchema from '../../formValidator/login.yup';
 import CustomForm from '../../components/Formik/CustomForm';
 import CustomField from '../../components/Formik/CustomField';
+import axios from 'axios';
+import { rootUrl } from '../../utils/rootUrl';
+import { useNavigate } from 'react-router-dom';
+import UserContext from '../../Contexts/UserContext';
 
 const Login = () => {
+    const [user,setUser]=useContext(UserContext)
+    const [status,setStatus]=useState(null);
+    const [message,setMessage]=useState('')
+    const navigate=useNavigate();
+
     const initialValues={
         phoneNo:"",
         password:""
     }
-    const handleSubmit=(values)=>{
-
+    const handleSubmit=async (values)=>{
+        await axios.post(rootUrl+'user/login',values)
+         .then(({data})=>{
+            if(data.status){
+                const {token,...others}=data.data
+                setUser(others)
+                localStorage.setItem('token',data.data.token)
+                setStatus(true);
+                navigate('../')
+            }
+         })
+         .catch((err)=>{
+             const {message}=err.response.data
+              setStatus(false);
+              setMessage(message)
+         })
     }
+    console.log("logged in user==",user);
     return (
         <div className='m-7 mt-24'>
             <div className="hero">
@@ -22,7 +46,7 @@ const Login = () => {
                     <div className="card my-3 mx-9 flex-shrink-0 w-full max-w-sm shadow-2xl bg-white card-body">
                         <CustomForm initialValues={initialValues} onSubmit={handleSubmit} validationSchema={loginSchema}>
                              <CustomField 
-                             type="tel" 
+                             type="tel"
                              name='phoneNo' 
                              labelText='Phone'  
                              className="bg-white w-full input input-bordered" 
@@ -37,6 +61,11 @@ const Login = () => {
                                    <button className="btn bg-success glass text-white" type='submit'>Login</button>
                              </div> 
                         </CustomForm>
+                          {
+                            status===false && 
+                            <p className='text-[red] text-md my-1 text-[600] text-center'>*{message}</p>
+
+                          }
                     </div>
                    
                 </div>
