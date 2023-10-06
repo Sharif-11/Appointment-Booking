@@ -1,5 +1,6 @@
 import React from 'react';
 import { MdVerifiedUser } from "react-icons/md";
+import { Link } from 'react-router-dom';
 // import "./PatientQueue.css"
 const AdminDashboard = () => {
     const appointments = [
@@ -170,7 +171,9 @@ const AdminDashboard = () => {
                                 appointments.map(appointment => <>
                                     <tr className=''>
                                         <th>{appointment.serialNo}</th>
-                                        <td className='flex items-center p-3'><img className="w-[40px] h-[40px] rounded-full" src={appointment.image} alt="" /><span className='p-2'>{appointment.name}</span><MdVerifiedUser className='text-success text-lg'></MdVerifiedUser></td>
+                                        <td className='flex items-center p-3'><img className="w-[40px] h-[40px] rounded-full" src={appointment.image} alt="" /><span className='p-2'>
+                                            <Link to={`/user-profile`} style={{ textDecoration: "none", color:"black" }} className='hover:text-success'>{appointment.name}</Link>
+                                        </span><MdVerifiedUser className='text-success text-lg'></MdVerifiedUser></td>
                                         <td>{appointment.gender === "Male" ? (
                                             <div className="text-[#f0f8ff] badge badge-outline badge-accent center p-3">
                                                 {appointment.gender}

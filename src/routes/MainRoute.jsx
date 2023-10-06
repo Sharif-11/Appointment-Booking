@@ -13,6 +13,7 @@ import AdminScheduleTimings from '../components/AdminScheduleTimings/AdminSchedu
 import AdminProfileSettings from '../components/AdminProfileSettings/AdminProfileSettings';
 import AdminChangePassword from '../components/AdminChangePassword/AdminChangePassword';
 import Schedule from '../pages/Schedule/Schedule';
+import UserProfile from '../components/UserProfile/UserProfile';
 
 const mainRouter = [
     {
@@ -32,11 +33,11 @@ const mainRouter = [
                 element: <About></About>
             },
             {
-                path: "/admin",
+                path: "/",
                 element: <Admin></Admin>,
                 children: [
                     {
-                        path: "",
+                        path: "/admin",
                         element: <AdminDashboard></AdminDashboard>
                     },
                     {
@@ -76,6 +77,10 @@ const mainRouter = [
             {
                 path: "/signup",
                 element: <Signup></Signup>
+            },
+            {
+                path: "/user-profile",
+                element: <UserProfile></UserProfile>
             },
             {
                 path: "/patient-queue",
