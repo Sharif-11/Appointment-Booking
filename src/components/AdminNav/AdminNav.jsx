@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { RxDashboard } from "react-icons/rx";
 import { BsClockFill } from "react-icons/bs";
 import { MdManageAccounts } from 'react-icons/md';
@@ -10,15 +10,15 @@ const AdminNav = () => {
         <div className="bg-white border-2 row-span-3 rounded-2xl divide-y">
             {/* navigation */}
             <div className='text-center mt-8'>
-                <div className="avatar">
+                <Link to='admin/admin-profile-settings' className="avatar">
                     <div className="w-24 rounded-full ring-4 ring-success ring-offset ring-offset-2">
                         <img src="https://placekitten.com/g/200/202" />
                     </div>
-                </div>
-                <div>
+                </Link>
+                <Link to="admin/admin-profile-settings" style={{textDecoration: "none", color:"black"}}>
                     <h2 className='text-xl font-semibold'>Dr. Meow Cat</h2>
                     <small className='text-muted'>MBBS, MCM, MD - (Medicine Specialist)</small>
-                </div>
+                </Link>
             </div>
             <div className="flex flex-col divide-y m-5 mt-11">
 

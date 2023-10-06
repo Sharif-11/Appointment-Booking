@@ -99,7 +99,7 @@ const AdminScheduleTimings = () => {
                                         </div>
                                     </div>
                                     <div className='text-center'>
-                                        <button className='focus:outline-none btn btn-success text-white'>Add Slots</button>
+                                        <button className='focus:outline-none btn bg-success glass text-white'>Add Slots</button>
                                     </div>
                                 </form>
                             </div>
