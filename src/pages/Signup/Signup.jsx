@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { useFormik } from 'formik';
-import signupSchema from '../formValidator/signup.yup';
+ import signupSchema from '../../formValidator/signup.yup';
 import axios from 'axios';
-import { rootUrl } from '../utils/rootUrl';
+import { rootUrl } from '../../utils/rootUrl';
 const Signup = () => {
     const navigate = useNavigate();
     const [success,setSuccess]=useState(null)
@@ -51,7 +51,7 @@ const Signup = () => {
 
                     <div className="card mx-9 flex-shrink-0 w-full max-w-[650px] shadow-2xl bg-white card-body">
                         <form className='w-[100%]' onSubmit={formik.handleSubmit}>
-                            <div className="flex justify-between w-[100%] flex-wrap">
+                            <div className="flex justify-between w-[100%] flex-wrap" >
                                 <div className="form-control w-[45%]">
                                     <label className="label">
                                         <span className="label-text">Name</span>
@@ -62,7 +62,7 @@ const Signup = () => {
                                      id='name'
                                      onChange={formik.handleChange}
                                      value={formik.values.name}
-                                     className="bg-white input input-bordered"  required
+                                     className="bg-white input input-bordered w-full"  required
                                     />
                                       {formik.touched.name && formik.errors.name ? (
                                <div className="text-[red] text-[600] text-xs my-1">*{formik.errors.name}</div>
@@ -79,7 +79,7 @@ const Signup = () => {
                                     id='dateOfBirth'
                                     onChange={formik.handleChange}
                                     value={formik.values.dateOfBirth}
-                                    className="bg-white input input-bordered" required />
+                                    className="bg-white input input-bordered w-full" required />
                                       {formik.touched.dateOfBirth && formik.errors.dateOfBirth ? (
           <div className="text-xs text-[red] text-[600] my-1">*{formik.errors.dateOfBirth}</div>
         ) : null}
@@ -94,7 +94,7 @@ const Signup = () => {
                                     id='phoneNo'
                                     onChange={formik.handleChange}
                                     value={formik.values.phoneNo} 
-                                     className="bg-white input input-bordered" required />
+                                     className="bg-white input input-bordered w-full" required />
                                        {formik.touched.phoneNo && formik.errors.phoneNo ? (
           <div className="text-xs text-[600] my-1 text-[red]">*{formik.errors.phoneNo}</div>
         ) : null}
@@ -109,7 +109,7 @@ const Signup = () => {
                                     id='email'
                                     onChange={formik.handleChange}
                                     value={formik.values.email}
-                                     className="bg-white input input-bordered" />
+                                     className="bg-white input input-bordered w-full" />
                                        {formik.touched.email && formik.errors.email ? (
           <div className="text-xs text-[red] my-1 text-[600]">*{formik.errors.email}</div>
         ) : null}
@@ -124,7 +124,7 @@ const Signup = () => {
                                     id='password'
                                     onChange={formik.handleChange}
                                     value={formik.values.password}
-                                    className="bg-white input input-bordered " required />
+                                    className="bg-white input input-bordered w-full " required />
                                       {formik.touched.password && formik.errors.password ? (
           <div className="text-xs text-[red] my-1 text-[600]">*{formik.errors.password}</div>
         ) : null}
@@ -138,7 +138,7 @@ const Signup = () => {
                                     id='confirmPassword'
                                     onChange={formik.handleChange}
                                     value={formik.values.confirmPassword}
-                                     placeholder="Confirm password"  className="bg-white input input-bordered " required />
+                                     placeholder="Confirm password"  className="bg-white input input-bordered w-full" required />
                                     {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
           <div className="text-xs text-[red] my-1 text-[600]">*{formik.errors.confirmPassword}</div>
         ) : null}
@@ -150,7 +150,7 @@ const Signup = () => {
                                 </div> */}
                             </div>
                             <div className="form-control mt-6">
-                                    <input type='submit' className="btn glass bg-success text-white" value={'Register'} />
+                                    <input type='submit' className="btn glass bg-success text-white w-full" value={'Register'} />
                                     {
                                         (success===true) ? 
                                         <p className='my-1 text-center text-md text-[700] text-[green]'>{message}</p>:
