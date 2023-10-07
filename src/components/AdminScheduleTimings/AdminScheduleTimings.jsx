@@ -36,10 +36,11 @@ const AdminScheduleTimings = () => {
       .catch(()=>setSlots([]))
       setLoading(false)
    },[weekDay])
-    const handleDeleteSlot = (index) => {
-        // Create a new array without the slot at the specified index
-        const updatedSlots = slots.filter((_, i) => i !== index);
-        setSlots(updatedSlots);
+    const handleDeleteSlot = async (index) => {
+        setLoading(true)
+        await axios.delete(rootUrl+'doctor/slot/'+slots[index]._id)
+        .then(({data})=>data.status && setSlots([...slots.filter((_, i) => i !== index)]) )
+       setLoading(false)
     };
 
     const handleAddSlots = (event) => {
@@ -121,10 +122,10 @@ const AdminScheduleTimings = () => {
                             </div>
                         </dialog>
                     </div>
-                    { loading ? 
+                     
                     
-                    <span className="loading loading-bars loading-xl"></span>
-                    : 
+                    {loading && <span className="loading loading-bars loading-xl"></span>}
+                    
                     <div className='flex gap-4 flex-wrap'>
                         {
                             slots.map((slot, idx) => {
@@ -136,7 +137,7 @@ const AdminScheduleTimings = () => {
                                 )
                             })
                         }
-                    </div>}
+                    </div>
                 </div>
             </div>
         </div>
