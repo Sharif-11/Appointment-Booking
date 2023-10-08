@@ -1,30 +1,32 @@
-import React, { useContext, useState } from 'react';
+import  { useContext, useState } from 'react';
 import loginSchema from '../../formValidator/login.yup';
 import CustomForm from '../../components/Formik/CustomForm';
 import CustomField from '../../components/Formik/CustomField';
-import axios from 'axios';
 import { rootUrl } from '../../utils/rootUrl';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../../Contexts/UserContext';
+import axios from 'axios';
 
 const Login = () => {
-    const [user,setUser]=useContext(UserContext)
+    const {user,setUser}=useContext(UserContext)
     const [status,setStatus]=useState(null);
     const [message,setMessage]=useState('')
     const navigate=useNavigate();
 
     const initialValues={
-        phoneNo:"",
-        password:""
+        phoneNo:"01865926160",
+        password:"123456"
     }
     const handleSubmit=async (values)=>{
-        await axios.post(rootUrl+'user/login',values)
+        
+        await axios.post(rootUrl+'user/login',values,{withCredentials:true})
          .then(({data})=>{
             if(data.status){
                 const {token,...others}=data.data
                 setUser(others)
-                localStorage.setItem('token',data.data.token)
+                localStorage.setItem('token',token)
                 setStatus(true);
+               
                 navigate('../')
             }
          })
