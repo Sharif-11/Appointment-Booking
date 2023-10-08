@@ -14,6 +14,10 @@ import AdminProfileSettings from '../components/AdminProfileSettings/AdminProfil
 import AdminChangePassword from '../components/AdminChangePassword/AdminChangePassword';
 import Schedule from '../pages/Schedule/Schedule';
 import UserProfile from '../components/UserProfile/UserProfile';
+import AdminAppointment from '../components/AdminAppointment/AdminAppointment';
+import CreateAppointment from '../components/AdminAppointment/CreateAppointment';
+import DeleteAppointment from '../components/AdminAppointment/DeleteAppointment';
+import StartCloseAppointment from '../components/AdminAppointment/StartCloseAppointment';
 
 const mainRouter = [
     {
@@ -47,6 +51,28 @@ const mainRouter = [
                     {
                         path: "admin/admin-schedule-timings",
                         element: <AdminScheduleTimings></AdminScheduleTimings>
+                    },
+                    {
+                        path: "admin/admin-appointment",
+                        element: <AdminAppointment/>,
+                        children:[
+                            {
+                                path:'',
+                                element:<CreateAppointment/>
+                            },
+                            {
+                                path:'create',
+                                element:<CreateAppointment/>
+                            },
+                            {
+                                path:'delete',
+                                element:<DeleteAppointment/>
+                            },
+                            {
+                                path:'start-close',
+                                element:<StartCloseAppointment/>
+                            },
+                        ]
                     },
                     {
                         path: "admin/admin-profile-settings",

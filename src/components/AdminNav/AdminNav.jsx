@@ -5,6 +5,7 @@ import { BsClockFill } from "react-icons/bs";
 import { MdManageAccounts } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { FaSignOutAlt } from 'react-icons/fa';
+import { FaCalendar } from 'react-icons/fa';
 import UserContext from '../../Contexts/UserContext';
 import { rootUrl } from '../../utils/rootUrl';
 import axios from 'axios'
@@ -45,6 +46,12 @@ const AdminNav = () => {
                     className={({ isActive }) => (isActive ? "p-3  active flex items-center" : "items-center flex p-3 text-slate-400")}
                 >
                     <BsClockFill className='me-3'></BsClockFill> Schedule Timings
+                </NavLink>
+                <NavLink
+                    to="admin/admin-appointment"
+                    className={({ isActive }) => (isActive ? "p-3  active flex items-center" : "items-center flex p-3 text-slate-400")}
+                >
+                    <FaCalendar className='me-3'></FaCalendar>Appointment
                 </NavLink>
 
                 <NavLink
