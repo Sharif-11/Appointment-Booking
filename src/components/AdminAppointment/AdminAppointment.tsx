@@ -8,7 +8,7 @@ const AdminAppointment = () => {
     const inactiveClass="tab tab-lifted  w-[33.33%]"
     return (
          <div>
-        <div className="tabs tabs-boxed w-[100%]">
+        <div className="tabs tabs-boxed w-[100%] mb-5">
          <Link to='/admin/admin-appointment/create'
          onClick={()=>setCurrentRoute('create')}
           className={currentRoute==="create" ? activeClass:inactiveClass}>Create Appointment</Link> 
