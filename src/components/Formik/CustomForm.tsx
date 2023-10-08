@@ -1,12 +1,12 @@
 import { Form, Formik } from 'formik';
 import React from 'react';
 
-const CustomForm = ({initialValues,validationSchema,onSubmit,children}) => {
+const CustomForm = ({initialValues,validationSchema,onSubmit,children,...rest}) => {
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
         {() => (
           <Form>
-            <div className="">
+            <div {...rest}>
                                 
                   {children}             
                                

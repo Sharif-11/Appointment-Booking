@@ -1,8 +1,14 @@
-/* eslint-disable no-undef */
-const yup = require('yup');
+import * as  yup from 'yup';
 
-const timeSchema = yup.object().shape({
-    startTime: yup.string().matches(/^\d{4}-\d{2}-\d{2}$/, 'Date must be in yyyy-mm-dd format').required('Start time is required'),
-    endTime: yup.string().matches(/^\d{4}-\d{2}-\d{2}$/, 'Date must be in yyyy-mm-dd format').required('End time is required'),
-  });
+// Define the schema for the interface
+const timeSchema=  yup.object().shape({
+  startTime: yup.string().matches(
+    /^(0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/,
+    'Start time must be in the format HH:mm (24-hour)'
+  ),
+  endTime: yup.string().matches(
+    /^(0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/,
+    'End time must be in the format HH:mm (24-hour)'
+  ),
+});
 export default timeSchema
