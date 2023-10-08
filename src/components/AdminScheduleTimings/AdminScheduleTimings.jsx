@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RxCrossCircled } from "react-icons/rx";
 import { HiPlusCircle } from "react-icons/hi";
+import axiosApi from '../../Axios/axios';
+import { rootUrl } from '../../utils/rootUrl';
+import axios from 'axios';
 const daysOfWeek = [
     "Sunday",
     "Monday",
@@ -13,17 +16,31 @@ const daysOfWeek = [
 
 const AdminScheduleTimings = () => {
     const [weekDay, setWeekDay] = useState(0);
-    const [slots, setSlots] = useState([{ startTime: "08:00AM", endTime: "10:00AM" },
-    { startTime: "04:00PM", endTime: "10:00PM" },
-    { startTime: "01:00PM", endTime: "05:00PM" },
-    { startTime: "06:00PM", endTime: "09:00PM" },
-    { startTime: "06:00PM", endTime: "09:00PM" },
-    { startTime: "06:00PM", endTime: "09:00PM" }])
-
-    const handleDeleteSlot = (index) => {
-        // Create a new array without the slot at the specified index
-        const updatedSlots = slots.filter((_, i) => i !== index);
-        setSlots(updatedSlots);
+    const [loading,setLoading]=useState(true)
+    // const [slots, setSlots] = useState([{ startTime: "08:00AM", endTime: "10:00AM" },
+    // { startTime: "04:00PM", endTime: "10:00PM" },
+    // { startTime: "01:00PM", endTime: "05:00PM" },
+    // { startTime: "06:00PM", endTime: "09:00PM" },
+    // { startTime: "06:00PM", endTime: "09:00PM" },
+    // { startTime: "06:00PM", endTime: "09:00PM" }])
+    const [slots,setSlots]=useState([])
+    console.log(daysOfWeek[weekDay]);
+   useEffect( ()=>{
+      setLoading(true)
+     axios({
+        method:'post',
+        data:{weekDay:daysOfWeek[weekDay]},
+        url:rootUrl+'doctor/slots'
+     })
+      .then(({data})=>setSlots(data.data))
+      .catch(()=>setSlots([]))
+      setLoading(false)
+   },[weekDay])
+    const handleDeleteSlot = async (index) => {
+        setLoading(true)
+        await axios.delete(rootUrl+'doctor/slot/'+slots[index]._id)
+        .then(({data})=>data.status && setSlots([...slots.filter((_, i) => i !== index)]) )
+       setLoading(false)
     };
 
     const handleAddSlots = (event) => {
@@ -105,7 +122,10 @@ const AdminScheduleTimings = () => {
                             </div>
                         </dialog>
                     </div>
-
+                     
+                    
+                    {loading && <span className="loading loading-bars loading-xl"></span>}
+                    
                     <div className='flex gap-4 flex-wrap'>
                         {
                             slots.map((slot, idx) => {

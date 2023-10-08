@@ -15,6 +15,7 @@ function App() {
     console.log(data);
       if(data.status){
         setUser(data.data)
+        localStorage.setItem('token',data.data.token)
         
       }
   })
