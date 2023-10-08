@@ -8,23 +8,23 @@ import { rootUrl } from './utils/rootUrl';
 import axiosApi from './Axios/axios';
 function App() {
   const router = createBrowserRouter(mainRouter)
-  const [user,setUser]=useState(null);
-  useEffect(()=>{
-   axiosApi.get(rootUrl+'user/login')
-  .then(({data})=>{
-    console.log(data);
-      if(data.status){
-        setUser(data.data)
-        
-      }
-  })
-  .catch(()=>setUser(null))
-  },[])
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    axiosApi.get(rootUrl + 'user/login')
+      .then(({ data }) => {
+        console.log(data);
+        if (data.status) {
+          setUser(data.data)
+
+        }
+      })
+      .catch(() => setUser(null))
+  }, [])
   return (
-    <UserContext.Provider value={[user,setUser]}>
-       <div>
-      <RouterProvider router={router}></RouterProvider>
-    </div>
+    <UserContext.Provider value={[user, setUser]}>
+      <div>
+        <RouterProvider router={router}></RouterProvider>
+      </div>
     </UserContext.Provider>
   )
 }
