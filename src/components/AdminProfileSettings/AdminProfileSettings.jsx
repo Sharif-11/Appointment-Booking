@@ -1,6 +1,15 @@
-import React from 'react';
+import {useContext,useState} from 'react';
 import "./AdminProfileSettings.css"
+import UserContext from '../../Contexts/UserContext'
+import CustomForm from '../Formik/CustomForm'
+import CustomField from '../Formik/CustomField'
+import doctorSchema from '../../formValidator/doctorProfile.yup';
+
 const AdminProfileSettings = () => {
+    const {user}=useContext(UserContext)
+    const {name,designation,email,gender,aboutMe}=user
+    const initialValues={ name, designation, email, aboutMe,gender}
+    const handleSubmit=(values)=>{}
     return (
         <div className="container">
             <div className="title">Basic Information</div>
@@ -26,16 +35,13 @@ const AdminProfileSettings = () => {
             </div>
 
             <div className="content">
-                <form action="#">
+                {/* <form action="#">
                     <div className="user-details">
                         <div className="input-box">
                             <span className="details">Full Name</span>
                             <input type="text" placeholder="Enter your name" required className='bg-white ' />
                         </div>
-                        {/* <div className="input-box">
-                                <span className="details">Username</span>
-                                <input type="text" placeholder="Enter your username" required className='bg-white '/>
-                            </div> */}
+                      
                         <div className="input-box">
                             <span className="details">Email</span>
                             <input type="text" placeholder="Enter your email" required className='bg-white ' />
@@ -86,7 +92,40 @@ const AdminProfileSettings = () => {
                     <div className='text-center'>
                         <button className='focus:outline-none btn bg-success glass text-white'>Save Changes</button>
                     </div>
-                </form>
+                </form> */}
+                <CustomForm
+                 initialValues={initialValues} 
+                 onSubmit={handleSubmit}
+                 validationSchema={doctorSchema}
+                 className='flex justify-between flex-wrap  mx-8 my-8'
+                 >
+                 <CustomField
+                  name='name'
+                  labelText='Name'
+                  className='bg-white input input-bordered w-[350px]'
+                  placeholder='Enter Name'
+                 />
+                 <CustomField
+                  name='email'
+                  labelText='Email'
+                  className='bg-white input input-bordered w-[350px]'
+                  placeholder='Enter Email'
+                 />
+                 <CustomField
+                  name='designation'
+                  type='text'
+                  labelText='Designation'
+                  className='bg-white input input-bordered w-[350px]'
+                  placeholder='Enter Designation'
+                 />
+                 <CustomField
+                  name='aboutMe'
+                  as='textarea'
+                  labelText='About Me'
+                  className='bg-white input input-bordered w-[350px]'
+                  placeholder='Enter Designation'
+                 />
+                </CustomForm>
             </div>
         </div>
     );
