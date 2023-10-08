@@ -3,16 +3,14 @@ import Slot from '../Slot/Slot';
 import axios from 'axios'
 import {rootUrl} from '../../utils/rootUrl'
 const CreateAppointment = () => {
-    const [slots,setSlots]=useState([{
-        startTime:"09:00 AM",
-        endTime:"12:00 PM",
-        bookingStartTime:"08:00 AM",
-        bookingEndTime:"09:00 AM"
-    }])
+    const [slots,setSlots]=useState([])
+    const [loading,setLoading]=useState(true);
     useEffect(()=>{
-      axios.get(rootUrl+'doctor/slots',{withCredentials:true})
+        setLoading(true)
+      axios.post(rootUrl+'doctor/slots',{},{withCredentials:true})
            .then(({data})=>data.status ? setSlots(data.data): setSlots([]))  
            .catch(()=>setSlots([]))
+    setLoading(false)
     },[])
     return (
         <div>
