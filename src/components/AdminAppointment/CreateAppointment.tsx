@@ -3,6 +3,7 @@ import Slot from '../Slot/Slot';
 import axios from 'axios'
 import {rootUrl} from '../../utils/rootUrl'
 import {useNavigate} from 'react-router-dom'
+import Slots from '../Slot/Slots';
 const CreateAppointment = () => {
     const [slots,setSlots]=useState([])
     const [loading,setLoading]=useState(true);
@@ -28,14 +29,10 @@ await axios.post(rootUrl+'doctor/appointment',{slotId:id},{withCredentials:true}
     return (
         <div>
             <p className='text-center font-[700] text-xl'>Slots Available today</p>
-          <div className='flex justify-between flex-wrap mx-8'>
-            {
-                slots.map((slot,idx)=><Slot 
-                id={idx}
-                {...slot} 
-                createAppointment={()=>createAppointment(slot._id)}/>)
-            }
-          </div>
+          <Slots 
+          slots={slots} 
+          handlingFunction={createAppointment} 
+          buttonType={0}/>
         </div>
     );
 };
