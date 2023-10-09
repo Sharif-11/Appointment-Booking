@@ -18,6 +18,8 @@ import AdminAppointment from '../components/AdminAppointment/AdminAppointment';
 import CreateAppointment from '../components/AdminAppointment/CreateAppointment';
 import DeleteAppointment from '../components/AdminAppointment/DeleteAppointment';
 import StartCloseAppointment from '../components/AdminAppointment/StartCloseAppointment';
+import StartAppointment from '../components/AdminAppointment/StartAppointment';
+import CloseAppointment from '../components/AdminAppointment/CloseAppointment';
 
 const mainRouter = [
     {
@@ -69,8 +71,12 @@ const mainRouter = [
                                 element:<DeleteAppointment/>
                             },
                             {
-                                path:'start-close',
-                                element:<StartCloseAppointment/>
+                                path:'start',
+                                element:<StartAppointment/>
+                            },
+                            {
+                                path:'close',
+                                element:<CloseAppointment/>
                             },
                         ]
                     },
