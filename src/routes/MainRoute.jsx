@@ -19,7 +19,8 @@ import CreateAppointment from '../components/AdminAppointment/CreateAppointment'
 import DeleteAppointment from '../components/AdminAppointment/DeleteAppointment';
 import StartAppointment from '../components/AdminAppointment/StartAppointment';
 import CloseAppointment from '../components/AdminAppointment/CloseAppointment';
-
+import PatientProfile from '../components/PatientProfile/PatientProfile';
+import UserProfileSettings from '../components/UserProfileSettings'
 const mainRouter = [
     {
         path: '/',
@@ -55,27 +56,27 @@ const mainRouter = [
                     },
                     {
                         path: "admin/admin-appointment",
-                        element: <AdminAppointment/>,
-                        children:[
+                        element: <AdminAppointment />,
+                        children: [
                             {
-                                path:'',
-                                element:<CreateAppointment/>
+                                path: '',
+                                element: <CreateAppointment />
                             },
                             {
-                                path:'create',
-                                element:<CreateAppointment/>
+                                path: 'create',
+                                element: <CreateAppointment />
                             },
                             {
-                                path:'delete',
-                                element:<DeleteAppointment/>
+                                path: 'delete',
+                                element: <DeleteAppointment />
                             },
                             {
-                                path:'start',
-                                element:<StartAppointment/>
+                                path: 'start',
+                                element: <StartAppointment />
                             },
                             {
-                                path:'close',
-                                element:<CloseAppointment/>
+                                path: 'close',
+                                element: <CloseAppointment />
                             },
                         ]
                     },
@@ -112,6 +113,14 @@ const mainRouter = [
             {
                 path: "/user-profile",
                 element: <UserProfile></UserProfile>
+            },
+            {
+                path: "/patient-profile",
+                element: <PatientProfile></PatientProfile>
+            },
+            {
+                path: "/user-profile-settings",
+                element: <UserProfileSettings></UserProfileSettings>
             },
             {
                 path: "/patient-queue",
