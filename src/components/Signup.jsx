@@ -17,7 +17,6 @@ const Signup = () => {
           dateOfBirth:'',
           phoneNo:'',
           confirmPassword:''
-
         },
         validationSchema: signupSchema,
         onSubmit: async (values) => {
@@ -143,8 +142,6 @@ const Signup = () => {
           <div className="text-xs text-[red] my-1 text-[600]">*{formik.errors.confirmPassword}</div>
         ) : null}
                                 </div>
-                               
-
                                 {/* <div className="form-control">
                                     <button className="btn glass bg-success text-white"><FaGoogle className='text-xl'></FaGoogle></button>
                                 </div> */}
@@ -162,9 +159,7 @@ const Signup = () => {
                                     {/* <div className="divider">OR</div> */}
                                 </div>
                         </form>
-
                     </div>
-
                 </div>
             </div>
         </div>
