@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import {rootUrl} from '../../utils/rootUrl'
 import Appointment from './Appointment';
+import PaymentCheckout from '../../components/PaymentCheckout';
 const Appointments = () => {
     const [appointments,setAppointments]=useState([])
     useEffect(()=>{
@@ -22,7 +23,7 @@ const Appointments = () => {
                }
             </div>
             {appointments.length===0 &&<h1 className='text-center text-[gray] my-auto text-[16px]'>There is no upcoming Appointments</h1>}
-
+            <PaymentCheckout></PaymentCheckout>
         </div>
     );
 };
