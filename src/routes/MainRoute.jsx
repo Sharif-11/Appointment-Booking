@@ -1,7 +1,6 @@
 import About from '../pages/About/About';
 import Admin from '../pages/Admin/Admin';
 import Layout from '../components/Layout';
-import Appointment from '../pages/Appointment/Appointment';
 import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
 import Signup from '../pages/Signup/Signup';
@@ -19,6 +18,8 @@ import CreateAppointment from '../components/AdminAppointment/CreateAppointment'
 import DeleteAppointment from '../components/AdminAppointment/DeleteAppointment';
 import StartAppointment from '../components/AdminAppointment/StartAppointment';
 import CloseAppointment from '../components/AdminAppointment/CloseAppointment';
+import Appointments from '../pages/Appointment/Appointments';
+
 import PatientProfile from '../components/PatientProfile/PatientProfile';
 import UserProfileSettings from '../components/UserProfileSettings'
 const mainRouter = [
@@ -92,7 +93,7 @@ const mainRouter = [
             },
             {
                 path: "/appointment",
-                element: <Appointment></Appointment>
+                element: <Appointments/>
             },
             {
                 path: "/contact",
