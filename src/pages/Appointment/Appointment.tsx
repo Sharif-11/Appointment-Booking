@@ -4,7 +4,7 @@ import axios from 'axios'
 import {rootUrl} from '../../utils/rootUrl'
 import UserContext from '../../Contexts/UserContext'
 import { useNavigate } from 'react-router-dom';
-const Appointment = ({startTime,endTime,bookingStartTime,bookingEndTime,visitingFee,remainingSlots,_id}) => {
+const Appointment = ({startTime,endTime,bookingStartTime,bookingEndTime,visitingFee,remainingSlots,_id,slotId}) => {
       const {user}=useContext<any>(UserContext)
       const [booked,setBooked]=useState(false);
       const [loading,setLoading]=useState(false)
@@ -37,7 +37,7 @@ const Appointment = ({startTime,endTime,bookingStartTime,bookingEndTime,visiting
               :  
               <button className='btn btn-info my-3'
                disabled={!remainingSlots}
-               onClick={()=>navigate('/checkout/'+_id)}
+               onClick={()=>navigate('/checkout/'+_id,{state:{visitingFee,slotId}})}
               >Book Appointment {loading && <span className="loading loading-ring loading-xs"></span>}
               </button>
            }
