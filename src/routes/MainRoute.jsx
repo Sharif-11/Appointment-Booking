@@ -22,6 +22,7 @@ import Appointments from '../pages/Appointment/Appointments';
 
 import PatientProfile from '../components/PatientProfile/PatientProfile';
 import UserProfileSettings from '../components/UserProfileSettings'
+import PaymentCheckout from '../components/PaymentCheckout';
 const mainRouter = [
     {
         path: '/',
@@ -94,6 +95,10 @@ const mainRouter = [
             {
                 path: "/appointment",
                 element: <Appointments/>
+            },
+            {
+                path: "/checkout/:id",
+                element: <PaymentCheckout/>
             },
             {
                 path: "/contact",

@@ -1,9 +1,13 @@
-import React from 'react';
-import { MdLocationPin } from 'react-icons/md';
-import CustomField from './Formik/CustomField';
-import CustomForm from './Formik/CustomForm';
+import { useContext } from 'react';
+// import { MdLocationPin } from 'react-icons/md';
+
+import { useParams } from 'react-router-dom';
+import UserContext from '../Contexts/UserContext';
 
 const PaymentCheckout = () => {
+    const {id}=useParams();
+    const {user:{name,email,phoneNo,userId}}=useContext(UserContext)
+    console.log({id});
     return (
         <div className='my-[10%] mx-[5%]'>
             <div className="card mx-auto">
@@ -20,27 +24,29 @@ const PaymentCheckout = () => {
                                 </div>
                                 <div className="grid card flex-grow mt-[5%] h-auto rounded-box">
                                     <div className="booking-card">
-                                        <h2 className='mb-[2%] font-bold text-left'>Booking Summary</h2>
-
-                                        <ul className="flex gap-4">
-                                            <li><span className='font-bold'>Date :</span><span>14 Nov 2023</span></li>
-                                            <li><span className='font-bold'>Time :</span><span>10:00 AM</span></li>
-                                        </ul>
+                                        <h2 className='mb-[2%] font-[900] text-center mb-4'>Booking Summary</h2>
 
                                         <div className='flex justify-between'>
-                                            <span>Consulting Fee</span>
-                                            <span>$100</span>
+                                            <span className='font-[600]'>Name</span>
+                                             <div className='text-left italic w-[40%]'>{name}</div>
+                                        </div>
+                                        <div className='flex justify-between my-1'>
+                                            <span className='font-[600]'>Email</span>
+                                            <div className='text-left italic w-[40%]'>{email}</div>
+                                        </div>
+                                        <div className='flex justify-between my-1'>
+                                            <span className='font-[600]'>Phone Number</span>
+                                            <div className='text-left italic w-[40%]'>{phoneNo}</div>
+                                        </div>
+                                        <div className='flex justify-between my-1'>
+                                            <span className='font-[600]'>Consulting Fee</span>
+                                            <div className='text-left italic w-[40%] text-md font-[600]'>
+                                                <span className='mr-[2px]'>{'\u09F3'}</span>
+                                                {500}</div>
+ 
                                         </div>
 
-                                        <div className='flex justify-between'>
-                                            <span>Booking Fee</span>
-                                            <span>$10</span>
-                                        </div>
-                                        <hr />
-                                        <div className='flex justify-between'>
-                                            <span className='font-bold'>Total</span>
-                                            <span>$110</span>
-                                        </div>
+                                      
                                     </div>
                                 </div>
                             </div>

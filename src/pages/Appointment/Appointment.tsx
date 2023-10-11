@@ -3,28 +3,20 @@ import convertToAMPMFormat from '../../utils/util.time'
 import axios from 'axios'
 import {rootUrl} from '../../utils/rootUrl'
 import UserContext from '../../Contexts/UserContext'
+import { useNavigate } from 'react-router-dom';
 const Appointment = ({startTime,endTime,bookingStartTime,bookingEndTime,visitingFee,remainingSlots,_id}) => {
       const {user}=useContext<any>(UserContext)
       const [booked,setBooked]=useState(false);
       const [loading,setLoading]=useState(false)
       const [message,setMessage]=useState('')
       const [remaining,setRemaining]=useState(remainingSlots)
+      const navigate=useNavigate()
       useEffect(()=>{
         axios.get(rootUrl+'patient/booking/'+_id,{withCredentials:true})
           .then(({data})=>data.status && setBooked(data.data))
           .catch(()=>setBooked(false))
       },[])
-      const bookAppointment=async (id:string)=>{
-        setMessage('')
-        setLoading(true)
-        await axios.post(rootUrl+'patient/booking/'+id,
-        {userId:user._id},{withCredentials:true})
-          .then(({data})=>{
-          data.status && setBooked(true) 
-          setRemaining(data.data.appointment.remainingSlots)})
-         .catch((err)=>{setMessage(err.response.data.errors[0])})
-        setLoading(false)
-     }
+     
      startTime=convertToAMPMFormat(startTime)
      endTime=convertToAMPMFormat(endTime)
      bookingStartTime=convertToAMPMFormat(bookingStartTime)
@@ -45,7 +37,7 @@ const Appointment = ({startTime,endTime,bookingStartTime,bookingEndTime,visiting
               :  
               <button className='btn btn-info my-3'
                disabled={!remainingSlots}
-              onClick={()=>bookAppointment(_id)}
+               onClick={()=>navigate('/checkout/'+_id)}
               >Book Appointment {loading && <span className="loading loading-ring loading-xs"></span>}
               </button>
            }
