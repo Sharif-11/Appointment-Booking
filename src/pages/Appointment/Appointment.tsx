@@ -12,7 +12,11 @@ const Appointment = ({startTime,endTime,bookingStartTime,bookingEndTime,visiting
       const [remaining,setRemaining]=useState(remainingSlots)
       const navigate=useNavigate()
       useEffect(()=>{
-        axios.get(rootUrl+'patient/booking/'+_id,{withCredentials:true})
+        axios.post(rootUrl+'patient/check-booking/'+_id,
+        {
+          userId:user.userId
+        },
+        {withCredentials:true})
           .then(({data})=>data.status && setBooked(data.data))
           .catch(()=>setBooked(false))
       },[])
