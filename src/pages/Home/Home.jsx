@@ -36,7 +36,7 @@ const Home = () => {
                     <img src="/public/images/Banner-2.jpg" data-te-carousel-fade
                         data-te-carousel-item
                         data-te-carousel-active className="h-[650px] w-full opacity-40" />
-                    {/* <h1 className='-ml-[60%] mt-[20%] text-white font-bold'>Hello, I'm Dr. X</h1> */}
+                    {/* <h1 className='-ml-[60%] mt-[20%] text-white font-bold'>Hello, I'm Dr. {doctor.name}</h1> */}
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                         <a href="#slide1" className="btn btn-circle">❮</a>
                         <a href="#slide3" className="btn btn-circle">❯</a>
@@ -46,7 +46,7 @@ const Home = () => {
                     <img src="/public/images/Banner-3.jpg" data-te-carousel-fade
                         data-te-carousel-item
                         data-te-carousel-active className="h-[650px] w-full opacity-40" />
-                    {/* <h1 className='-ml-[60%] mt-[20%] text-white font-bold'>Hello, I'm Dr. X</h1> */}
+                    {/* <h1 className='-ml-[60%] mt-[20%] text-white font-bold'>Hello, I'm Dr. {doctor.name}</h1> */}
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                         <a href="#slide2" className="btn btn-circle">❮</a>
                         <a href="#slide1" className="btn btn-circle">❯</a>
@@ -112,7 +112,7 @@ const Home = () => {
 
                 <div className='right w-2/3 mt-30 py-10 px-28'>
                     <div>
-                         <p className='text-gray-600 font-bold text-3xl py-3'>Contact with Dr. X</p>
+                         <p className='text-gray-600 font-bold text-3xl py-3'>Contact with Dr. {doctor?.name}</p>
                          <p className='flex py-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta i</p>
                     </div>
                     <div className='flex flex-col text-grey-600 bg-white rounded-xl'>
