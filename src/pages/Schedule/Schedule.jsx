@@ -14,10 +14,7 @@ const daysOfWeek = [
 const Schedule = () => {
     const [weekDay, setWeekDay] = useState(0);
     const [slots, setSlots] = useState([{ startTime: "08:00AM", endTime: "10:00AM" },
-    { startTime: "04:00PM", endTime: "10:00PM" },
-    { startTime: "01:00PM", endTime: "05:00PM" },
-    { startTime: "06:00PM", endTime: "09:00PM" },
-    { startTime: "06:00PM", endTime: "09:00PM" },
+    { startTime: "01:00PM", endTime: "03:00PM" },
     { startTime: "06:00PM", endTime: "09:00PM" }]); // this slots should be dynamic; will be changed later
     return (
         <div className='mt-[8%]'>
