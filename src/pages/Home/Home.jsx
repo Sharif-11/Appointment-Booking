@@ -1,7 +1,13 @@
-import React from 'react';
-import Image from 'react-bootstrap/Image';
-import Carousel from 'react-bootstrap/Carousel';
+import  { useEffect, useState } from 'react';
+import {rootUrl} from '../../utils/rootUrl'
+import axios from 'axios'
 const Home = () => {
+    const [doctor,setDoctor]=useState(null);
+    useEffect(()=>{
+        axios.get(rootUrl+'doctor-info',{withCredentials:true})
+          .then(({data})=>setDoctor(data.data))
+          .catch(()=>setDoctor(null))
+    },[])
     return (
         <div className='mt-16'>
             <div className="carousel w-full bg-gray-900">
@@ -12,7 +18,7 @@ const Home = () => {
                             data-te-carousel-active className="absolute top-0 left-0 w-full h-full opacity-20" />
                         <div className="absolute inset-0 flex items-center justify-center">
                             <div className="text-center">
-                                <h1 className="font-bold py-3 text-white">Hello, I'm Dr. X</h1>
+                                <h1 className="font-bold py-3 text-white">Hello, I'm Dr. {doctor?.name}</h1>
                                 <p className='py-3 text-white'>
                                     Nam vehicula malesuada lectus, interdum fringilla nibh. <br /> Duis aliquam vitae metus a pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                 </p>
@@ -31,8 +37,8 @@ const Home = () => {
                         data-te-carousel-active className="h-[650px] w-full opacity-40" />
                     {/* <h1 className='-ml-[60%] mt-[20%] text-white font-bold'>Hello, I'm Dr. X</h1> */}
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide1" className="btn btn-circle">❮</a>
-                        <a href="#slide3" className="btn btn-circle">❯</a>
+                        <a href="#slide1" className="btn btn-circle"></a>
+                        <a href="#slide3" className="btn btn-circle"></a>
                     </div>
                 </div>
                 <div id="slide3" className="carousel-item relative w-full">
@@ -41,8 +47,8 @@ const Home = () => {
                         data-te-carousel-active className="h-[650px] w-full opacity-40" />
                     {/* <h1 className='-ml-[60%] mt-[20%] text-white font-bold'>Hello, I'm Dr. X</h1> */}
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide2" className="btn btn-circle">❮</a>
-                        <a href="#slide1" className="btn btn-circle">❯</a>
+                        <a href="#slide2" className="btn btn-circle"></a>
+                        <a href="#slide1" className="btn btn-circle"></a>
                     </div>
                 </div>
             </div>
@@ -53,7 +59,7 @@ const Home = () => {
                     <p className=''>This is a dummy text.Nam vehicula malesuada lectus, interdum fringilla nibh.</p>
                 </div>
                 <div className='middle w-1/4 mx-16'>
-                    <img src="/public/images/med-2.jpg" className='h-14 mx-28' />
+                    <img src="/public/images/med-2.jpg" className='h-14 mx-28'/>
                     <p className='font-bold text-xl text-gray-600 py-3'>Paediatric & Adult Audiology</p>
                     <p>This is a dummy text.Nam vehicula malesuada lectus, interdum fringilla nibh.</p>
                 </div>
@@ -66,18 +72,18 @@ const Home = () => {
             </div>
             <div className='container2 mt-30 flex mx-auto items-center justify-center '>
                 <div className='left w-1/2'>
-                    <h1 className='text-gray-600 font-bold py-3'>About Dr X<br /></h1>
-                    <p className='py-3 '> Nam vehicula malesuada lectus, interdum fringilla nibh. <br /> Duis aliquam vitae metus a pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                    <h1 className='text-gray-600 font-bold py-3'>About Dr X<br/></h1>
+                    <p className='py-3 '> Nam vehicula malesuada lectus, interdum fringilla nibh. <br/> Duis aliquam vitae metus a pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
                     <button className='btn bg-[#285b85] text-white font-bold'>Know More</button>
                 </div>
                 <div className='right w-1/3 flex flex-col'>
-
-                    <img src="/public/images/doctor-1.png" className='w-300' />
+                    
+                    <img src="/public/images/doctor-1.png" className='w-300'/>
                 </div>
             </div>
             <div className='container3 mt-30 flex mx-auto items-center justify-center '>
-                <div className='left w-1/3 flex flex-col'>
-                    <img src="/public/images/doctor-2.png" className='w-300' />
+                 <div className='left w-1/3 flex flex-col'>
+                    <img src="/public/images/doctor-2.png" className='w-300'/>
                 </div>
                 <div className='right w-3/4'>
                     <p className='text-gray-600 text-3xl font-bold py-3 mx-20'>Specialist hearing services are provided</p>
@@ -90,30 +96,30 @@ const Home = () => {
                     <p className='mx-36'>Provision of Hearing Instruments involves the recommendation, customization, and fitting of devices to enhance auditory experiences for those with hearing impairments. Servicing of Hearing Instruments encompasses maintenance, repairs, and adjustments to ensure optimal performance and longevity of these devices.</p>
                     <p></p>
                 </div>
-
+                
             </div>
             <div className='container-4 flex'>
-                <div className='left w-1/3 mt-30 py-12 px-28'>
-                    <p className='text-gray-600 font-bold text-3xl py-3 flex'>Address Line #1</p>
-                    <p>123 Main Street</p>
-                    <p>Your City, State</p>
-                    <p>Country.</p>
-                    <p className='flex py-3 mb-0'>(123)456-7890 <br />(123)456-7899</p>
-                    <p>info@doctorX.me</p>
-                    <p>info@doctorX.me</p>
-                </div>
+            <div className='left w-1/3 mt-30 py-12 px-28'>
+              <p className='text-gray-600 font-bold text-3xl py-3 flex'>Address Line #1</p>
+              <p>123 Main Street</p>
+              <p>Your City, State</p>
+              <p>Country.</p>
+              <p className='flex py-3 mb-0'>(123)456-7890 <br />(123)456-7899</p>
+              <p>info@doctorX.me</p>
+              <p>info@doctorX.me</p>
+            </div>
 
                 <div className='right w-2/3 mt-30 py-10 px-28'>
                     <div>
-                        <p className='text-gray-600 font-bold text-3xl py-3'>Contact with Dr. X</p>
-                        <p className='flex py-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta i</p>
+                         <p className='text-gray-600 font-bold text-3xl py-3'>Contact with Dr. X</p>
+                         <p className='flex py-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta i</p>
                     </div>
                     <div className='flex flex-col text-grey-600 bg-white rounded-xl'>
-                        <input type='text' placeholder='Enter Your Email Address ' className='bg-white rounded p-2 my-1 shadow-sm border border-gray-400' />
-                        <input type='text' placeholder='Enter Your Full Name ' className='bg-white rounded p-2 my-1 shadow-sm border border-gray-400' />
-                        <input type='text' placeholder='Enter Your Message' className='bg-white rounded p-8 my-1 shadow-sm border border-gray-400' />
-                        <button className='mt-2 bg-[#285b85] text-white py-2 px-4 rounded shadow-sm hover:bg-gray-900'>Submit</button>
-                    </div>
+                       <input type='text' placeholder='Enter Your Email Address ' className='bg-white rounded p-2 my-1 shadow-sm border border-gray-400' />
+                       <input type='text' placeholder='Enter Your Full Name ' className='bg-white rounded p-2 my-1 shadow-sm border border-gray-400' />
+                       <input type='text' placeholder='Enter Your Message' className='bg-white rounded p-8 my-1 shadow-sm border border-gray-400' />
+                       <button className='mt-2 bg-[#285b85] text-white py-2 px-4 rounded shadow-sm hover:bg-gray-900'>Submit</button>
+                   </div>
 
                 </div>
             </div>

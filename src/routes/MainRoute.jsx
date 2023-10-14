@@ -1,7 +1,6 @@
 import About from '../pages/About/About';
 import Admin from '../pages/Admin/Admin';
 import Layout from '../components/Layout';
-import Appointment from '../pages/Appointment/Appointment';
 import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
 import Signup from '../pages/Signup/Signup';
@@ -14,7 +13,15 @@ import AdminProfileSettings from '../components/AdminProfileSettings/AdminProfil
 import AdminChangePassword from '../components/AdminChangePassword/AdminChangePassword';
 import Schedule from '../pages/Schedule/Schedule';
 import UserProfile from '../components/UserProfile/UserProfile';
+import AdminAppointment from '../components/AdminAppointment/AdminAppointment';
+import CreateAppointment from '../components/AdminAppointment/CreateAppointment';
+import DeleteAppointment from '../components/AdminAppointment/DeleteAppointment';
+import StartAppointment from '../components/AdminAppointment/StartAppointment';
+import CloseAppointment from '../components/AdminAppointment/CloseAppointment';
+import Appointments from '../pages/Appointment/Appointments';
 
+import PatientProfile from '../components/PatientProfile/PatientProfile';
+import UserProfileSettings from '../components/UserProfileSettings'
 const mainRouter = [
     {
         path: '/',
@@ -49,6 +56,32 @@ const mainRouter = [
                         element: <AdminScheduleTimings></AdminScheduleTimings>
                     },
                     {
+                        path: "admin/admin-appointment",
+                        element: <AdminAppointment />,
+                        children: [
+                            {
+                                path: '',
+                                element: <CreateAppointment />
+                            },
+                            {
+                                path: 'create',
+                                element: <CreateAppointment />
+                            },
+                            {
+                                path: 'delete',
+                                element: <DeleteAppointment />
+                            },
+                            {
+                                path: 'start',
+                                element: <StartAppointment />
+                            },
+                            {
+                                path: 'close',
+                                element: <CloseAppointment />
+                            },
+                        ]
+                    },
+                    {
                         path: "admin/admin-profile-settings",
                         element: <AdminProfileSettings></AdminProfileSettings>
                     },
@@ -60,7 +93,7 @@ const mainRouter = [
             },
             {
                 path: "/appointment",
-                element: <Appointment></Appointment>
+                element: <Appointments/>
             },
             {
                 path: "/contact",
@@ -81,6 +114,14 @@ const mainRouter = [
             {
                 path: "/user-profile",
                 element: <UserProfile></UserProfile>
+            },
+            {
+                path: "/patient-profile",
+                element: <PatientProfile></PatientProfile>
+            },
+            {
+                path: "/user-profile-settings",
+                element: <UserProfileSettings></UserProfileSettings>
             },
             {
                 path: "/patient-queue",
