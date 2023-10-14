@@ -122,11 +122,11 @@ const Home = () => {
                         <p className='text-gray-600 font-bold text-3xl py-3'>Contact with Dr. X</p>
                         <p className='flex py-3'>Contact Dr. X for further inquiries.</p>
                     </div>
-                    <div className='flex flex-col text-grey-600 bg-white rounded-xl'>
-                        <input type='text' placeholder='Enter Your Email Address ' className='bg-white rounded p-2 my-1 shadow-sm border border-gray-400' />
-                        <input type='text' placeholder='Enter Your Full Name ' className='bg-white rounded p-2 my-1 shadow-sm border border-gray-400' />
-                        <input type='text' placeholder='Enter Your Message' className='bg-white rounded p-8 my-1 shadow-sm border border-gray-400' />
-                        <button className='mt-2 bg-[#285b85] text-white py-2 px-4 rounded shadow-sm hover:bg-gray-900'>Submit</button>
+                    <div className='flex flex-col text-grey-600 bg-transparent rounded-xl'>
+                        <input type="text" placeholder="Enter Your Full Name" className="my-1 input glass bg-transparent input-bordered input-info w-full" />
+                        <input type="email" placeholder="Enter Your Email Address" className="my-1 glass input bg-transparent input-bordered input-info w-full" />
+                        <textarea className="my-1 textarea textarea-info glass bg-transparent" placeholder="Enter Your Message"></textarea>
+                        <button className='mt-1 btn bg-success glass text-white font-bold focus:outline-none'>Submit</button>
                     </div>
 
                 </div>
