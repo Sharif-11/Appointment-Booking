@@ -172,7 +172,7 @@ const AdminDashboard = () => {
                                     <tr className=''>
                                         <th>{appointment.serialNo}</th>
                                         <td className='flex items-center p-3'><img className="w-[40px] h-[40px] rounded-full" src={appointment.image} alt="" /><span className='p-2'>
-                                            <Link to={`/user-profile`} style={{ textDecoration: "none", color:"black" }} className='hover:text-success'>{appointment.name}</Link>
+                                            <Link to={`/user-profile`} style={{ textDecoration: "none", color: "black" }} className='hover:text-success'>{appointment.name}</Link>
                                         </span><MdVerifiedUser className='text-success text-lg'></MdVerifiedUser></td>
                                         <td>{appointment.gender === "Male" ? (
                                             <div className="text-[#f0f8ff] badge badge-outline badge-accent center p-3">
@@ -187,14 +187,22 @@ const AdminDashboard = () => {
                                             <div className='badge badge-outline p-3'>{appointment.slotTime}
                                             </div>
                                         </td>
-                                        <td className='text-white'>
+                                        <td className=''>
                                             {appointment.status === "Done" ? (
-                                                <div className="text-[#f0f8ff] badge badge-success center p-3">
-                                                    {appointment.status}
+                                                <div className="relative inline-flex">
+                                                    <select className="select select-bordered bg-success text-white select-xs text-xs max-w-xs">
+                                                        <option className="text-xs">Done</option>
+                                                        <option className="text-xs">Now</option>
+                                                        <option className="text-xs">Done</option>
+                                                    </select>
                                                 </div>
                                             ) : (
-                                                <div className="text-[#f0f8ff] badge badge-info center p-3">
-                                                    {appointment.status}
+                                                <div className="relative inline-flex">
+                                                    <select className="select select-bordered bg-info text-white select-xs text-xs max-w-xs">
+                                                        <option className="text-xs">Waiting</option>
+                                                        <option className="text-xs">Now</option>
+                                                        <option className="text-xs">Done</option>
+                                                    </select>
                                                 </div>
                                             )}
                                         </td>

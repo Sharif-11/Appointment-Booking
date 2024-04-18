@@ -1,8 +1,7 @@
 import React from 'react';
 import { MdLocationPin } from 'react-icons/md';
-import { Link } from 'react-router-dom';
 
-const UserProfile = () => {
+const PatientProfile = () => {
     return (
         <div className='my-[10%]'>
             <div className="card w-3/5 mx-auto">
@@ -55,4 +54,4 @@ const UserProfile = () => {
     );
 };
 
-export default UserProfile;
+export default PatientProfile;

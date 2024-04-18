@@ -1,11 +1,22 @@
-import React from 'react';
+import React ,{useContext} from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { RxDashboard } from "react-icons/rx";
 import { BsClockFill } from "react-icons/bs";
 import { MdManageAccounts } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { FaSignOutAlt } from 'react-icons/fa';
+import { FaCalendar } from 'react-icons/fa';
+import UserContext from '../../Contexts/UserContext';
+import { rootUrl } from '../../utils/rootUrl';
+import axios from 'axios'
 const AdminNav = () => {
+    const {setUser}=useContext(UserContext)
+    const handleLogout=async()=>{
+        await axios.post(rootUrl+'user/logout',{},{withCredentials:true})
+           .then(()=>{
+              setUser(null)
+           })
+    }
     return (
         <div className="bg-white border-2 row-span-3 rounded-2xl divide-y">
             {/* navigation */}
@@ -36,6 +47,12 @@ const AdminNav = () => {
                 >
                     <BsClockFill className='me-3'></BsClockFill> Schedule Timings
                 </NavLink>
+                <NavLink
+                    to="admin/admin-appointment"
+                    className={({ isActive }) => (isActive ? "p-3  active flex items-center" : "items-center flex p-3 text-slate-400")}
+                >
+                    <FaCalendar className='me-3'></FaCalendar>Appointment
+                </NavLink>
 
                 <NavLink
                     to="admin/admin-profile-settings"
@@ -54,7 +71,7 @@ const AdminNav = () => {
                 <NavLink
                     className={({ isActive }) => (isActive ? "p-3 active flex items-center" : "items-center flex p-3 text-slate-400")}
                 >
-                    <FaSignOutAlt className='me-3'></FaSignOutAlt> <span>Logout</span>
+                    <FaSignOutAlt className='me-3'></FaSignOutAlt> <span onClick={handleLogout}>Logout</span>
                 </NavLink>
 
             </div>
