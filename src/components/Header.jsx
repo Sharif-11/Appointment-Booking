@@ -1,9 +1,16 @@
+import axios from "axios";
 import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import UserContext from "../Contexts/UserContext";
+import { rootUrl } from "../utils/rootUrl";
 
 const Header = () => {
   const { user } = useContext(UserContext);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    alert("logout");
+    axios.post(rootUrl + "/user/logout").then(() => navigate("/"));
+  };
   console.log(user);
   return (
     <div className="mt-16">
@@ -34,11 +41,6 @@ const Header = () => {
                 <NavLink to="/signup">Signup</NavLink>
               </li>
             )}
-            {user !== null && (
-              <li className="mx-2">
-                <NavLink to="/logout">Logout</NavLink>
-              </li>
-            )}
 
             <li className="mx-2">
               <NavLink to="/admin">Admin</NavLink>
@@ -66,7 +68,7 @@ const Header = () => {
                   <li>
                     <Link to="/user-profile-settings">Settings</Link>
                   </li>
-                  <li>
+                  <li onClick={handleLogout}>
                     <a>Logout</a>
                   </li>
                 </ul>
