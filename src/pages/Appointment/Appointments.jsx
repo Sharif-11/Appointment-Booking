@@ -23,7 +23,6 @@ const Appointments = () => {
                }
             </div>
             {appointments.length===0 &&<h1 className='text-center text-[gray] my-auto text-[16px]'>There is no upcoming Appointments</h1>}
-            <PaymentCheckout></PaymentCheckout>
         </div>
     );
 };
