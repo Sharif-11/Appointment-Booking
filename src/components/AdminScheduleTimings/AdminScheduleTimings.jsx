@@ -18,7 +18,7 @@ const daysOfWeek = [
 ];
 
 const AdminScheduleTimings = () => {
-  const [weekDay, setWeekDay] = useState(0);
+  const [weekDay, setWeekDay] = useState(new Date().getDay());
   const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState(false);
   const [error, setError] = useState(null);

@@ -5,11 +5,15 @@ import UserContext from "../Contexts/UserContext";
 import { rootUrl } from "../utils/rootUrl";
 
 const Header = () => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const handleLogout = () => {
-    alert("logout");
-    axios.post(rootUrl + "/user/logout").then(() => navigate("/"));
+    axios
+      .post(rootUrl + "user/logout", { withCredentials: true })
+      .then(({ data }) => {
+        alert(JSON.stringify(data));
+        navigate("/");
+      });
   };
   console.log(user);
   return (
