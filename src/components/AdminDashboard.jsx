@@ -1,115 +1,122 @@
-import React from 'react';
-import { MdVerifiedUser } from "react-icons/md";
-import { Link } from 'react-router-dom';
+import React from "react";
 // import "./PatientQueue.css"
 const AdminDashboard = () => {
-    const appointments = [
-        {
-            serialNo: 1,
-            name: 'John Doe',
-            gender: 'Male',
-            slotTime: '10:00 AM - 10:10 AM',
-            status: 'Done',
-            image: 'https://placekitten.com/g/200/200', // Add image URL here
-        },
-        {
-            serialNo: 2,
-            name: 'Jane Smith',
-            gender: 'Female',
-            slotTime: '10:15 AM - 10:25 AM',
-            status: 'Waiting',
-            image: 'https://placekitten.com/g/200/201', // Add image URL here
-        },
-        {
-            serialNo: 3,
-            name: 'Bob Johnson',
-            gender: 'Male',
-            slotTime: '10:30 AM - 10:40 AM',
-            status: 'Waiting',
-            image: 'https://placekitten.com/g/200/202', // Add image URL here
-        },
-        {
-            serialNo: 4,
-            name: 'Alice Brown',
-            gender: 'Female',
-            slotTime: '10:45 AM - 10:55 AM',
-            status: 'Done',
-            image: 'https://placekitten.com/g/200/203', // Add image URL here
-        },
-        {
-            serialNo: 5,
-            name: 'David Lee',
-            gender: 'Male',
-            slotTime: '11:00 AM - 11:10 AM',
-            status: 'Done',
-            image: 'https://placekitten.com/g/200/204', // Add image URL here
-        },
-        {
-            serialNo: 6,
-            name: 'Mary Taylor',
-            gender: 'Female',
-            slotTime: '11:15 AM - 11:25 AM',
-            status: 'Waiting',
-            image: 'https://placekitten.com/g/200/205', // Add image URL here
-        },
-        {
-            serialNo: 7,
-            name: 'Sam Wilson',
-            gender: 'Male',
-            slotTime: '11:30 AM - 11:40 AM',
-            status: 'Waiting',
-            image: 'https://placekitten.com/g/200/206', // Add image URL here
-        },
-        {
-            serialNo: 8,
-            name: 'Emily Davis',
-            gender: 'Female',
-            slotTime: '11:45 AM - 11:55 AM',
-            status: 'Done',
-            image: 'https://placekitten.com/g/200/207', // Add image URL here
-        },
-        {
-            serialNo: 9,
-            name: 'Michael White',
-            gender: 'Male',
-            slotTime: '12:00 PM - 12:10 PM',
-            status: 'Done',
-            image: 'https://placekitten.com/g/200/208', // Add image URL here
-        },
-        {
-            serialNo: 10,
-            name: 'Olivia Johnson',
-            gender: 'Female',
-            slotTime: '12:15 PM - 12:25 PM',
-            status: 'Waiting',
-            image: 'https://placekitten.com/g/200/209', // Add image URL here
-        },
-    ];
-    // Create a new Date object
-    // Create a new Date object for today's date
-    const today = new Date();
+  const appointments = [
+    {
+      serialNo: 1,
+      name: "John Doe",
+      gender: "Male",
+      slotTime: "10:00 AM - 10:10 AM",
+      status: "Done",
+      image: "https://placekitten.com/g/200/200", // Add image URL here
+    },
+    {
+      serialNo: 2,
+      name: "Jane Smith",
+      gender: "Female",
+      slotTime: "10:15 AM - 10:25 AM",
+      status: "Waiting",
+      image: "https://placekitten.com/g/200/201", // Add image URL here
+    },
+    {
+      serialNo: 3,
+      name: "Bob Johnson",
+      gender: "Male",
+      slotTime: "10:30 AM - 10:40 AM",
+      status: "Waiting",
+      image: "https://placekitten.com/g/200/202", // Add image URL here
+    },
+    {
+      serialNo: 4,
+      name: "Alice Brown",
+      gender: "Female",
+      slotTime: "10:45 AM - 10:55 AM",
+      status: "Done",
+      image: "https://placekitten.com/g/200/203", // Add image URL here
+    },
+    {
+      serialNo: 5,
+      name: "David Lee",
+      gender: "Male",
+      slotTime: "11:00 AM - 11:10 AM",
+      status: "Done",
+      image: "https://placekitten.com/g/200/204", // Add image URL here
+    },
+    {
+      serialNo: 6,
+      name: "Mary Taylor",
+      gender: "Female",
+      slotTime: "11:15 AM - 11:25 AM",
+      status: "Waiting",
+      image: "https://placekitten.com/g/200/205", // Add image URL here
+    },
+    {
+      serialNo: 7,
+      name: "Sam Wilson",
+      gender: "Male",
+      slotTime: "11:30 AM - 11:40 AM",
+      status: "Waiting",
+      image: "https://placekitten.com/g/200/206", // Add image URL here
+    },
+    {
+      serialNo: 8,
+      name: "Emily Davis",
+      gender: "Female",
+      slotTime: "11:45 AM - 11:55 AM",
+      status: "Done",
+      image: "https://placekitten.com/g/200/207", // Add image URL here
+    },
+    {
+      serialNo: 9,
+      name: "Michael White",
+      gender: "Male",
+      slotTime: "12:00 PM - 12:10 PM",
+      status: "Done",
+      image: "https://placekitten.com/g/200/208", // Add image URL here
+    },
+    {
+      serialNo: 10,
+      name: "Olivia Johnson",
+      gender: "Female",
+      slotTime: "12:15 PM - 12:25 PM",
+      status: "Waiting",
+      image: "https://placekitten.com/g/200/209", // Add image URL here
+    },
+  ];
+  // Create a new Date object
+  // Create a new Date object for today's date
+  const today = new Date();
 
-    // Define the months in an array for easier month name retrieval
-    const months = [
-        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-    ];
+  // Define the months in an array for easier month name retrieval
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 
-    // Get the day, month, and year
-    const day = today.getDate();
-    const monthIndex = today.getMonth(); // This returns a zero-based index
-    const year = today.getFullYear();
+  // Get the day, month, and year
+  const day = today.getDate();
+  const monthIndex = today.getMonth(); // This returns a zero-based index
+  const year = today.getFullYear();
 
-    // Get the month name from the months array
-    const monthName = months[monthIndex];
+  // Get the month name from the months array
+  const monthName = months[monthIndex];
 
-    // Format the date as "DD, Month YYYY"
-    const formattedDate = `${day < 10 ? '0' : ''}${day}, ${monthName} ${year}`;
-    return (
-        <div className=''>
-            <div>
-                {/* dashboard-right-part */}
-                <div className=''>
+  // Format the date as "DD, Month YYYY"
+  const formattedDate = `${day < 10 ? "0" : ""}${day}, ${monthName} ${year}`;
+  return (
+    <div className="">
+      <div>
+        {/* <div className=''>
                     <div className="card ">
                         <div className="card-body">
                             <div className="flex flex-row justify-between">
@@ -155,7 +162,7 @@ const AdminDashboard = () => {
                 </div>
                 <div className="overflow-x-auto">
                     <table className="table">
-                        {/* head */}
+                    
                         <thead>
                             <tr className="font-bold text-slate-700 text-[1.05rem]">
                                 <th></th>
@@ -166,7 +173,7 @@ const AdminDashboard = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* row 1 */}
+                    
                             {
                                 appointments.map(appointment => <>
                                     <tr className=''>
@@ -211,10 +218,10 @@ const AdminDashboard = () => {
                             }
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
-    );
+                </div> */}
+      </div>
+    </div>
+  );
 };
 
 export default AdminDashboard;
